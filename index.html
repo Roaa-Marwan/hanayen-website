@@ -13,6 +13,254 @@
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style id="reviews-component-styles">
+    #reviews .website-reviews-column {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    #reviews .website-review-form-box {
+      width: 100%;
+      padding: 28px;
+      background: #fff;
+      border: 1px solid #ece7e2;
+      border-radius: 26px;
+      box-shadow: 0 22px 60px rgba(86, 23, 23, .1);
+    }
+
+    #reviews .website-review-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    #reviews .website-review-form label {
+      display: block;
+      margin: 0;
+      color: #171717;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    #reviews .website-review-form textarea {
+      display: block;
+      width: 100%;
+      min-height: 145px;
+      margin: 0;
+      padding: 16px 18px;
+      resize: vertical;
+      border: 1px solid #e5ddd7;
+      border-radius: 17px;
+      outline: none;
+      color: #171717;
+      background: #fffaf6;
+      font: inherit;
+      line-height: 1.8;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    #reviews .website-review-form textarea:focus {
+      border-color: rgba(200, 32, 42, .5);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(200, 32, 42, .08);
+    }
+
+    #reviews .website-review-submit {
+      align-self: flex-start;
+      min-width: 135px;
+      min-height: 50px;
+    }
+
+    #reviews .website-review-status {
+      min-height: 20px;
+      margin: -3px 0 0;
+      color: #c8202a;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    #reviews .website-review-status.is-success {
+      color: #218447;
+    }
+
+    #reviews .website-reviews-carousel {
+      width: 100%;
+      min-width: 0;
+    }
+
+    #reviews .website-reviews-carousel h3 {
+      margin: 0;
+      color: #171717;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    #reviews .website-reviews-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 13px;
+    }
+
+    #reviews .website-reviews-controls {
+      display: inline-flex;
+      direction: rtl;
+      gap: 7px;
+    }
+
+    #reviews .website-reviews-control {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 1px solid #e7ded8;
+      border-radius: 12px;
+      color: #171717;
+      background: #fff;
+      font-size: 19px;
+      line-height: 1;
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+
+    #reviews .website-reviews-control:hover:not(:disabled) {
+      transform: translateY(-2px);
+      color: #fff;
+      background: #c8202a;
+      border-color: #c8202a;
+    }
+
+    #reviews .website-reviews-control:disabled {
+      cursor: not-allowed;
+      opacity: .35;
+    }
+
+    #reviews .website-reviews-window {
+      direction: ltr;
+      width: 100%;
+      min-height: 160px;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    #reviews .website-reviews-empty {
+      direction: rtl;
+      min-height: 160px;
+      margin: 0;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      border: 1px dashed #dfd4cd;
+      border-radius: 22px;
+      color: #6c6c6c;
+      background: rgba(255, 255, 255, .75);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    #reviews .website-reviews-empty[hidden],
+    #reviews .website-reviews-track[hidden] {
+      display: none !important;
+    }
+
+    #reviews .website-reviews-track {
+      direction: ltr;
+      width: 100%;
+      display: flex;
+      gap: 16px;
+      padding-inline: 9%;
+      animation: none !important;
+      transition: transform .65s cubic-bezier(.22, .75, .25, 1);
+      touch-action: pan-y;
+      cursor: grab;
+      user-select: none;
+      will-change: transform;
+    }
+
+    #reviews .website-reviews-track.is-dragging,
+    #reviews .website-reviews-track.is-jumping {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    #reviews .website-review-card {
+      direction: rtl;
+      position: relative;
+      width: auto;
+      min-width: 0;
+      flex: 0 0 82%;
+      min-height: 160px;
+      margin: 0;
+      padding: 30px 28px;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ece7e2;
+      border-radius: 22px;
+      color: #171717;
+      background: #fff;
+      box-shadow: 0 14px 38px rgba(86, 23, 23, .07);
+      opacity: .42;
+      transform: scale(.92);
+      transition: opacity .55s ease, transform .55s ease, box-shadow .55s ease;
+    }
+
+    #reviews .website-review-card.is-active {
+      z-index: 2;
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 18px 48px rgba(86, 23, 23, .12);
+    }
+
+    #reviews .website-review-quote {
+      position: absolute;
+      top: 7px;
+      right: 18px;
+      color: rgba(200, 32, 42, .13);
+      font-family: Georgia, serif;
+      font-size: 68px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    #reviews .website-review-card>p {
+      position: relative;
+      margin: 0;
+      color: #353535;
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    @media (max-width: 980px) {
+      #reviews .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      #reviews .website-review-form-box {
+        padding: 21px;
+        border-radius: 22px;
+      }
+
+      #reviews .website-review-submit {
+        width: 100%;
+      }
+
+      #reviews .website-review-card {
+        padding: 26px 22px;
+      }
+
+      #reviews .website-reviews-track {
+        gap: 12px;
+      }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -155,8 +403,6 @@
             <span class="eyebrow">قائمة الطعام</span>
             <h2>اختيارات بتفتح النفس</h2>
           </div>
-          <button class="btn btn-ghost open-lightbox" data-image="assets/menu-board.png"
-            data-alt="قائمة طعام الحناين كاملة">افتح القائمة كاملة</button>
         </div>
 
         <div class="menu-layout">
@@ -170,8 +416,21 @@
             </button>
           </div>
 
+          <div class="menu-category-tabs reveal" role="tablist" aria-label="أقسام قائمة الطعام">
+            <button class="menu-category-btn is-active" type="button" role="tab" aria-selected="true"
+              aria-controls="menu-broasted" data-menu-target="menu-broasted">بروستد</button>
+            <button class="menu-category-btn" type="button" role="tab" aria-selected="false"
+              aria-controls="menu-shawarma" data-menu-target="menu-shawarma">شاورما</button>
+            <button class="menu-category-btn" type="button" role="tab" aria-selected="false"
+              aria-controls="menu-burgers" data-menu-target="menu-burgers">برغر وزنجر</button>
+            <button class="menu-category-btn" type="button" role="tab" aria-selected="false" aria-controls="menu-grill"
+              data-menu-target="menu-grill">مشاوي ودجاج</button>
+            <button class="menu-category-btn" type="button" role="tab" aria-selected="false" aria-controls="menu-extras"
+              data-menu-target="menu-extras">إضافات</button>
+          </div>
+
           <div class="menu-highlights">
-            <article class="dish-card reveal">
+            <article class="dish-card reveal" id="menu-broasted" role="tabpanel" data-menu-panel>
               <span class="dish-kicker">بروستد</span>
               <h3>دجاج بروستد</h3>
 
@@ -235,7 +494,7 @@
                 <strong>17.00 د.أ</strong>
               </div>
             </article>
-            <article class="dish-card reveal" data-delay="80">
+            <article class="dish-card reveal" id="menu-shawarma" role="tabpanel" data-menu-panel data-delay="80">
               <span class="dish-kicker">شاورما</span>
               <h3>وجبات وعروض الشاورما</h3>
 
@@ -361,7 +620,7 @@
                 <strong>3.50 د.أ</strong>
               </div>
             </article>
-            <article class="dish-card reveal" data-delay="160">
+            <article class="dish-card reveal" id="menu-burgers" role="tabpanel" data-menu-panel data-delay="160">
               <span class="dish-kicker">برغر وسكالوب و زنجر</span>
               <h3>برغر، سكالوب وزنجر</h3>
 
@@ -442,7 +701,7 @@
 
             </article>
 
-            <article class="dish-card reveal" data-delay="160">
+            <article class="dish-card reveal" id="menu-grill" role="tabpanel" data-menu-panel data-delay="160">
               <span class="dish-kicker">مشاوي ودجاج</span>
               <h3>الدجاج الشواية</h3>
 
@@ -470,7 +729,7 @@
               </div>
 
             </article>
-            <article class="dish-card reveal" data-delay="200">
+            <article class="dish-card reveal" id="menu-extras" role="tabpanel" data-menu-panel data-delay="200">
               <span class="dish-kicker">إضافات</span>
               <h3>إضافات جانبية</h3>
               <p>أضف ما يناسب وجبتك.</p>
@@ -659,12 +918,41 @@
             <div class="big-rating">4.2</div>
             <div>
               <div class="stars">★★★★★</div>
-              <strong>2,167 مراجعة</strong>
+              <strong>أكثر من 2000 تقييم ممتاز</strong>
             </div>
           </div>
           <a class="btn btn-primary" target="_blank" rel="noreferrer"
             href="https://www.google.com/maps/place/Alhanayen+Shawerma/@32.0272945,35.8011062,13z/data=!4m12!1m2!2m1!1z2KfZhNit2YbYp9mK2YY!3m8!1s0x151b5fef011ebb77:0x4af0501ac9792d3e!8m2!3d31.9708991!4d35.9290542!9m1!1b1!15sCg7Yp9mE2K3Zhtin2YrZhloQIg7Yp9mE2K3Zhtin2YrZhpIBCnJlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUTVlRTFMYlZGUkVBReABAPoBBAgAEEk!16s%2Fg%2F11c1qw3wk7?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D#:~:text=Reviews">ابحث
             عن تقييمات Google</a>
+        </div>
+
+        <div class="website-reviews-column reveal" data-delay="100">
+          <div class="website-review-form-box">
+            <form class="website-review-form" id="reviewForm">
+              <label for="reviewText">بهمنا رأيك</label>
+              <textarea id="reviewText" name="reviewText" rows="5" minlength="5" maxlength="240"
+                placeholder="اكتب رأيك هون..." required></textarea>
+              <button class="btn btn-primary website-review-submit" type="submit">إرسال</button>
+              <p class="website-review-status" id="reviewFormStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="website-reviews-carousel">
+            <div class="website-reviews-heading">
+              <h3>آراء زوار الموقع</h3>
+              <div class="website-reviews-controls" aria-label="التحكم بآراء زوار الموقع">
+                <button class="website-reviews-control" id="reviewsPrevious" type="button"
+                  aria-label="الرأي السابق">→</button>
+                <button class="website-reviews-control" id="reviewsNext" type="button"
+                  aria-label="الرأي التالي">←</button>
+              </div>
+            </div>
+            <div class="website-reviews-window" id="reviewsWindow" tabindex="0"
+              aria-label="آراء زوار الموقع المتحركة، اسحب للتنقل بين الآراء">
+              <p class="website-reviews-empty" id="reviewsEmpty">ما في آراء لسه، كن أول شخص يترك رأيه.</p>
+              <div class="website-reviews-track" id="reviewsTrack"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -728,6 +1016,288 @@
   </dialog>
 
   <script src="script.js"></script>
+  <script>
+    (() => {
+      const tabs = [...document.querySelectorAll('[data-menu-target]')];
+      const panels = [...document.querySelectorAll('[data-menu-panel]')];
+
+      if (!tabs.length || !panels.length) return;
+
+      const showMenuCategory = (selectedTab, moveFocus = false) => {
+        const selectedId = selectedTab.dataset.menuTarget;
+
+        tabs.forEach((tab) => {
+          const isSelected = tab === selectedTab;
+          tab.classList.toggle('is-active', isSelected);
+          tab.setAttribute('aria-selected', String(isSelected));
+          tab.tabIndex = isSelected ? 0 : -1;
+        });
+
+        panels.forEach((panel) => {
+          const isSelected = panel.id === selectedId;
+          panel.hidden = !isSelected;
+          if (isSelected) panel.classList.add('in');
+        });
+
+        if (moveFocus) selectedTab.focus();
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => showMenuCategory(tab));
+
+        tab.addEventListener('keydown', (event) => {
+          if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+
+          let nextIndex = index;
+          if (event.key === 'Home') nextIndex = 0;
+          if (event.key === 'End') nextIndex = tabs.length - 1;
+          if (event.key === 'ArrowRight') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'ArrowLeft') nextIndex = (index + 1) % tabs.length;
+
+          showMenuCategory(tabs[nextIndex], true);
+        });
+      });
+
+      showMenuCategory(tabs[0]);
+    })();
+  </script>
+  <script>
+    (() => {
+      const form = document.getElementById('reviewForm');
+      const reviewInput = document.getElementById('reviewText');
+      const status = document.getElementById('reviewFormStatus');
+      const track = document.getElementById('reviewsTrack');
+      const emptyState = document.getElementById('reviewsEmpty');
+      const reviewsWindow = document.getElementById('reviewsWindow');
+      const previousButton = document.getElementById('reviewsPrevious');
+      const nextButton = document.getElementById('reviewsNext');
+
+      if (!form || !track || !reviewsWindow) return;
+
+      const storageKey = 'hanayen_website_reviews_v4'; let rotationTimer;
+      let currentReviewIndex = 0;
+      let displayReviewIndex = 0;
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragCurrentX = 0;
+
+      const getSavedReviews = () => {
+        try {
+          const value = JSON.parse(localStorage.getItem(storageKey) || '[]');
+          return Array.isArray(value)
+            ? value.filter((review) => typeof review?.text === 'string').slice(0, 20)
+            : [];
+        } catch {
+          return [];
+        }
+      };
+
+      let savedReviews = getSavedReviews();
+
+      const createReviewCard = (review) => {
+        const card = document.createElement('article');
+        card.className = 'website-review-card';
+
+        const quoteMark = document.createElement('span');
+        quoteMark.className = 'website-review-quote';
+        quoteMark.setAttribute('aria-hidden', 'true');
+        quoteMark.textContent = '“';
+
+        const quote = document.createElement('p');
+        quote.textContent = review.text;
+
+        card.append(quoteMark, quote);
+        return card;
+      };
+
+      const renderReviews = () => {
+        const hasReviews = savedReviews.length > 0;
+        emptyState.hidden = hasReviews;
+        track.hidden = !hasReviews;
+        updateControls();
+
+        if (!hasReviews) {
+          track.replaceChildren();
+          stopRotation();
+          return;
+        }
+
+        currentReviewIndex = 0;
+        const displayedReviews = savedReviews.length > 1
+          ? [savedReviews[savedReviews.length - 1], ...savedReviews, savedReviews[0]]
+          : savedReviews;
+        track.replaceChildren(...displayedReviews.map(createReviewCard));
+        displayReviewIndex = savedReviews.length > 1 ? 1 : 0;
+        moveToDisplayReview(displayReviewIndex, false);
+        startRotation();
+      };
+
+      function getDisplayReviewOffset(index) {
+        const card = track.children[index];
+        if (!card) return 0;
+        return card.offsetLeft - (reviewsWindow.clientWidth - card.offsetWidth) / 2;
+      }
+
+      function updateActiveReview() {
+        [...track.children].forEach((card, index) => {
+          card.classList.toggle('is-active', index === displayReviewIndex);
+        });
+      }
+
+      function moveToDisplayReview(index, animate = true) {
+        displayReviewIndex = index;
+        track.classList.toggle('is-jumping', !animate);
+        track.style.transform = `translateX(${-getDisplayReviewOffset(displayReviewIndex)}px)`;
+        updateActiveReview();
+
+        if (!animate) {
+          void track.offsetWidth;
+          track.classList.remove('is-jumping');
+        }
+      }
+
+      function showNextReview() {
+        if (savedReviews.length < 2) return;
+        currentReviewIndex = (currentReviewIndex + 1) % savedReviews.length;
+        moveToDisplayReview(displayReviewIndex + 1);
+      }
+
+      function showPreviousReview() {
+        if (savedReviews.length < 2) return;
+        currentReviewIndex = (currentReviewIndex - 1 + savedReviews.length) % savedReviews.length;
+        moveToDisplayReview(displayReviewIndex - 1);
+      }
+
+      function updateControls() {
+        const disabled = savedReviews.length < 2;
+        previousButton.disabled = disabled;
+        nextButton.disabled = disabled;
+      }
+
+      function stopRotation() {
+        window.clearInterval(rotationTimer);
+      }
+
+      function startRotation() {
+        stopRotation();
+        if (savedReviews.length < 2) return;
+
+        rotationTimer = window.setInterval(showNextReview, 3800);
+      }
+
+      previousButton.addEventListener('click', () => {
+        stopRotation();
+        showPreviousReview();
+        startRotation();
+      });
+
+      nextButton.addEventListener('click', () => {
+        stopRotation();
+        showNextReview();
+        startRotation();
+      });
+
+      reviewsWindow.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          stopRotation();
+          showNextReview();
+          startRotation();
+        }
+
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          stopRotation();
+          showPreviousReview();
+          startRotation();
+        }
+      });
+
+      track.addEventListener('pointerdown', (event) => {
+        if (savedReviews.length < 2) return;
+        isDragging = true;
+        dragStartX = event.clientX;
+        dragCurrentX = event.clientX;
+        stopRotation();
+        track.classList.add('is-dragging');
+        track.setPointerCapture(event.pointerId);
+      });
+
+      track.addEventListener('pointermove', (event) => {
+        if (!isDragging) return;
+        dragCurrentX = event.clientX;
+        const offset = -getDisplayReviewOffset(displayReviewIndex);
+        track.style.transform = `translateX(${offset + dragCurrentX - dragStartX}px)`;
+      });
+
+      const finishDrag = (event) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const distance = dragCurrentX - dragStartX;
+        track.classList.remove('is-dragging');
+        if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+
+        if (distance < -55) showNextReview();
+        else if (distance > 55) showPreviousReview();
+        else moveToDisplayReview(displayReviewIndex);
+
+        startRotation();
+      };
+
+      track.addEventListener('pointerup', finishDrag);
+      track.addEventListener('pointercancel', finishDrag);
+      track.addEventListener('transitionend', (event) => {
+        if (event.target !== track || event.propertyName !== 'transform' || savedReviews.length < 2) return;
+
+        if (displayReviewIndex === savedReviews.length + 1) {
+          displayReviewIndex = 1;
+          moveToDisplayReview(displayReviewIndex, false);
+        } else if (displayReviewIndex === 0) {
+          displayReviewIndex = savedReviews.length;
+          moveToDisplayReview(displayReviewIndex, false);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (savedReviews.length) moveToDisplayReview(displayReviewIndex, false);
+      }, { passive: true });
+
+      track.addEventListener('mouseenter', stopRotation);
+      track.addEventListener('mouseleave', startRotation);
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const text = reviewInput.value.trim();
+        if (text.length < 5) {
+          status.textContent = 'اكتب رأيك بخمس حروف على الأقل.';
+          status.classList.remove('is-success');
+          reviewInput.focus();
+          return;
+        }
+
+        const review = {
+          text,
+          createdAt: new Date().toISOString()
+        };
+
+        savedReviews = [review, ...savedReviews].slice(0, 20);
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(savedReviews));
+        } catch {
+          // The review still appears for the current visit if storage is unavailable.
+        }
+
+        renderReviews();
+        form.reset();
+        status.textContent = 'شكراً! انضاف رأيك.';
+        status.classList.add('is-success');
+      });
+
+      renderReviews();
+    })();
+  </script>
 </body>
 
 </html>
