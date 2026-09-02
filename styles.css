@@ -554,29 +554,32 @@ h1 span {
 }
 
 .ticker {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-block: 1px solid var(--line);
   background: var(--cream);
-  padding: 14px 0;
-  padding-inline: 18px;
+  padding: 0;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
 
+.ticker::-webkit-scrollbar {
+  display: none;
 }
 
 .ticker-track {
-  width: 100%;
-
+  width: max-content;
+  min-width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-
+  justify-content: center;
   gap: 26px;
-
+  padding: 14px 20px;
+  white-space: nowrap;
   animation: none;
-
   font-weight: 800;
   font-size: 15px;
 }
-
 .ticker-track i {
   color: var(--orange);
   font-style: normal;
