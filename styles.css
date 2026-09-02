@@ -558,6 +558,8 @@ h1 span {
   border-block: 1px solid var(--line);
   background: var(--cream);
   padding: 14px 0;
+  padding-inline: 18px;
+
 }
 
 .ticker-track {
@@ -841,7 +843,7 @@ h1 span {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 34px;
-  align-items: center;
+  align-items: start;
 }
 
 .branch-art {
@@ -1675,5 +1677,23 @@ h1 span {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+h2 {
+  line-height: 1.4 !important;
+  padding-top: 10px !important;
+  padding-bottom: 14px !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 980px) {
+  .branch-list {
+    grid-template-columns: 1fr;
+  }
+
+  .branch-art {
+    position: relative;
+    top: auto;
   }
 }
